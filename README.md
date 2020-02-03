@@ -3,6 +3,6 @@ This project was bootstrapped with [Create React App](https://github.com/faceboo
 ## SetUp
 
 ```
-$ yarn add redux react-redux react-router
-$ yarn add -D @types/react-redux
+$ yarn add redux react-redux react-router-dom
+$ yarn add -D @types/react-redux @types/react-router-dom
 ```
