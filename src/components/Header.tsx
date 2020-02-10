@@ -6,10 +6,10 @@ const Header: React.FC  = props => {
     <div>
       <h1>Header</h1>
       <ul>
-      <li><Link to='/'>Home</Link></li>
-      <li><Link to='/useronly'>UserOnly</Link></li>
-      <li><Link to='/signin'>SingIn</Link></li>
-      <li><Link to='/signUp'>SingUp</Link></li>
+        <li><Link to='/'>Home</Link></li>
+        <li><Link to='/useronly'>UserOnly</Link></li>
+        <li><Link to='/signin'>SingIn</Link></li>
+        <li><Link to='/signUp'>SingUp</Link></li>
       </ul>
     </div>
   )
