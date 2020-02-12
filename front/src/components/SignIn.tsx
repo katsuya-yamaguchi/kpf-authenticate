@@ -1,6 +1,6 @@
 import React from 'react';
 import { useDispatch  } from 'react-redux';
-import { login } from '../actions/auth';
+import { login, fetchLoginStatus } from '../actions/auth';
 import { userStateType } from '../constants/auth'
 
 const SignIn: React.FC = props => {
@@ -13,6 +13,7 @@ const SignIn: React.FC = props => {
       password: e.currentTarget.password.value
     }
     dispatch(login(user))
+    dispatch(fetchLoginStatus(true))
   }
 
   return (

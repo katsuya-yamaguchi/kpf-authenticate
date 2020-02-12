@@ -1,8 +1,12 @@
-import { loginActionType, userStateType } from '../constants/auth';
+import { loginActionType, userStateType, fetchLoginStatusActionType } from '../constants/auth';
 
 const initialState: userStateType = {
   email: "",
-  password: ""
+  password: "",
+}
+
+const init = {
+  isLoggedIn: false
 }
 
 export const authReducer = (
@@ -14,5 +18,17 @@ export const authReducer = (
       return Object.assign({}, state, {email: action.data.email})
     default:
       return state;
+  }
+}
+
+export const fetchLoginStatusReducer = (
+  state=init,
+  action: fetchLoginStatusActionType
+) => {
+  switch(action.type){
+    case 'FETCH_LOGIN_STATUS':
+      return Object.assign({}, state, {isLoggedIn: action.isLoggedIn})
+    default:
+      return state
   }
 }

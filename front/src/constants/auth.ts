@@ -15,3 +15,8 @@ export interface loginType {
   type: String
   user: userStateType
 }
+
+export interface fetchLoginStatusActionType {
+  type: String
+  isLoggedIn: Boolean
+}
