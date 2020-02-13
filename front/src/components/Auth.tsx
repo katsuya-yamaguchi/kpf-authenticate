@@ -4,7 +4,8 @@ import { useSelector } from 'react-redux'
 import { RootState } from '../store';
 
 const Auth: React.FC = (props) => {
-  const isLoggedIn = useSelector((state: RootState) => state.fetchLoginStatus.isLoggedIn)
+  const isLoggedIn = useSelector((state: RootState) => state.auth.isLoggedIn)
+  console.log(isLoggedIn)
 
   if(isLoggedIn){ 
     return (<div>{props.children}</div>)

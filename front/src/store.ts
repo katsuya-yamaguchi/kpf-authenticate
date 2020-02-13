@@ -1,10 +1,9 @@
 import { createStore, applyMiddleware, combineReducers } from 'redux';
-import { authReducer, fetchLoginStatusReducer } from './reducers/auth';
+import { authReducer } from './reducers/auth';
 import { createLogger } from 'redux-logger';
 
 const rootReducer = combineReducers({
   auth: authReducer,
-  fetchLoginStatus: fetchLoginStatusReducer
 })
 
 const logger = createLogger({
