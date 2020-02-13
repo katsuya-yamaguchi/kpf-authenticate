@@ -1,10 +1,9 @@
-import { 
+import {
   userType,
   AuthActionType,
   LOGIN,
-  FETCH_LOGIN_STATUS,
-} from '../constants/auth';
-
+  FETCH_LOGIN_STATUS
+} from '../constants/auth'
 
 export const login = (user: userType): AuthActionType => {
   return {

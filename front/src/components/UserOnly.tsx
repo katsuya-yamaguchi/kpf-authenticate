@@ -1,4 +1,4 @@
-import React from 'react';
+import React from 'react'
 
 const UserOnly: React.FC = props => {
   return (
@@ -8,4 +8,4 @@ const UserOnly: React.FC = props => {
   )
 }
 
-export default UserOnly;
+export default UserOnly

@@ -1,9 +1,9 @@
-import { createStore, applyMiddleware, combineReducers } from 'redux';
-import { authReducer } from './reducers/auth';
-import { createLogger } from 'redux-logger';
+import { createStore, applyMiddleware, combineReducers } from 'redux'
+import { authReducer } from './reducers/auth'
+import { createLogger } from 'redux-logger'
 
 const rootReducer = combineReducers({
-  auth: authReducer,
+  auth: authReducer
 })
 
 const logger = createLogger({
@@ -11,11 +11,6 @@ const logger = createLogger({
   collapsed: true
 })
 
-export const store = createStore(
-  rootReducer,
-  applyMiddleware(
-    logger
-  )
-);
+export const store = createStore(rootReducer, applyMiddleware(logger))
 
 export type RootState = ReturnType<typeof rootReducer>

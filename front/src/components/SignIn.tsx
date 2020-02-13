@@ -1,13 +1,13 @@
-import React from 'react';
-import { useDispatch  } from 'react-redux';
-import { login, fetchLoginStatus } from '../actions/auth';
+import React from 'react'
+import { useDispatch } from 'react-redux'
+import { login, fetchLoginStatus } from '../actions/auth'
 import { userType } from '../constants/auth'
 
 const SignIn: React.FC = props => {
-  const dispatch = useDispatch();
+  const dispatch = useDispatch()
 
   const handleSubmit = (e: React.FormEvent<HTMLFormElement>) => {
-    e.preventDefault();
+    e.preventDefault()
     const user: userType = {
       email: e.currentTarget.email.value,
       password: e.currentTarget.password.value
@@ -20,20 +20,12 @@ const SignIn: React.FC = props => {
     <div>
       <h1>SignIn</h1>
       <form onSubmit={handleSubmit}>
-        <input 
-          type='text'
-          name='email'
-          placeholder='Email'
-        />
-        <input 
-          type='password'
-          name='password'
-          placeholder='Password'
-        />
-        <button type='submit'>SingIn</button>
+        <input type="text" name="email" placeholder="Email" />
+        <input type="password" name="password" placeholder="Password" />
+        <button type="submit">SingIn</button>
       </form>
     </div>
   )
 }
 
-export default SignIn;
+export default SignIn

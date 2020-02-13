@@ -1,5 +1,4 @@
-import React from 'react';
-
+import React from 'react'
 
 const Home: React.FC = props => {
   return (
@@ -9,4 +8,4 @@ const Home: React.FC = props => {
   )
 }
 
-export default Home;
+export default Home
