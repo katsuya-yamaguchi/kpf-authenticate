@@ -2,13 +2,15 @@ import {
   AuthStateType,
   AuthActionType,
   LOGIN,
-  FETCH_LOGIN_STATUS
+  FETCH_LOGIN_STATUS,
+  FETCH_LOAD_USER_DATA
 } from '../constants/auth'
 
 const initialState: AuthStateType = {
   email: '',
   password: '',
-  isLoggedIn: false
+  isLoggedIn: false,
+  isLoading: false
 }
 
 export const authReducer = (
@@ -24,6 +26,8 @@ export const authReducer = (
       })
     case FETCH_LOGIN_STATUS:
       return Object.assign({}, state, { isLoggedIn: action.isLoggedIn })
+    case FETCH_LOAD_USER_DATA:
+      return Object.assign({}, state, { isLoggedIn: action.isLoading })
     default:
       return state
   }

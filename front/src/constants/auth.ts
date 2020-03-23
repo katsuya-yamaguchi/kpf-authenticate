@@ -2,6 +2,7 @@ export interface AuthStateType {
   email: String
   password: String
   isLoggedIn: boolean
+  isLoading: boolean
 }
 
 export interface loginStateType {
@@ -23,7 +24,13 @@ export interface fetchLoginStatusActionType {
   isLoggedIn: Boolean
 }
 
-export type AuthActionType = loginActionType | fetchLoginStatusActionType
+export const FETCH_LOAD_USER_DATA = 'FETCH_LOAD_USER_DATA'
+export interface fetchLoadUserDataActionType {
+  type: typeof FETCH_LOAD_USER_DATA
+  isLoading: Boolean
+}
+
+export type AuthActionType = loginActionType | fetchLoginStatusActionType | fetchLoadUserDataActionType
 
 export interface userType {
   email: String
