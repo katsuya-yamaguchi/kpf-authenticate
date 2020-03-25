@@ -1,6 +1,5 @@
 import React from 'react'
 import { useDispatch, useSelector } from 'react-redux'
-import { useLocation } from 'react-router-dom'
 import { thunkLogin } from '../actions/auth'
 import { userType } from '../constants/auth'
 import { RootState } from '../store'
