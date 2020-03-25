@@ -16,7 +16,8 @@ const useStyles = makeStyles((theme: Theme) =>
       justifyContent: 'center'
     },
     button: {
-      margin: '5px 0 0 0'
+      margin: '10px auto',
+      display: 'block'
     }
   })
 )
@@ -24,7 +25,6 @@ const useStyles = makeStyles((theme: Theme) =>
 const SignIn: React.FC = props => {
   const dispatch = useDispatch()
   const isLoading = useSelector((state: RootState) => state.auth.isLoading)
-  const location = useLocation()
 
   const classes = useStyles()
 
@@ -37,12 +37,10 @@ const SignIn: React.FC = props => {
     dispatch(thunkLogin(user))
   }
 
-  const currentPath: String = location.pathname.slice(1)
-
   return (
     <div>
-      <div>
-        <h1>{currentPath.toUpperCase()}</h1>
+      <div className={classes.root}>
+        <h1>SignIn</h1>
       </div>
       <div className={classes.root}>
         <form onSubmit={handleSubmit}>
@@ -55,12 +53,12 @@ const SignIn: React.FC = props => {
           {isLoading ? isLoading : isLoading}
           <div>
             <Button
-              className={classes.button}
-              variant="contained"
-              color="primary"
-              type="submit"
-            >
-              SignIn
+                className={classes.button}
+                variant="contained"
+                color="primary"
+                type="submit"
+              >
+                SignIn
             </Button>
           </div>
         </form>
