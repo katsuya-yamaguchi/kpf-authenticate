@@ -48,29 +48,28 @@ export const thunkLogin = (
     password: user.password
   }
 
-  fetch(
-    url,
-    {
-      method: 'POST',
-      mode: 'cors',
-      credentials: 'include',
-      headers: {
-        'Content-Type': 'application/json',
-      },
-      body: JSON.stringify(data) 
-    }
-  ).then( res => {
-    // json-serverで上手くHeaderが扱えなかったため、手動でCookieを設定。
-    document.cookie = `Authorization=${res.headers.get('Authorization')}`
-
-    const currentCookie: String | null = res.headers.get('Authorization')
-    if(currentCookie === null){
-      dispatch(fetchLoginStatus(false))
-    }
-    dispatch(fetchLoginStatus(true))
-  }).catch(e => {
-    console.log(e)
+  fetch(url, {
+    method: 'POST',
+    mode: 'cors',
+    credentials: 'include',
+    headers: {
+      'Content-Type': 'application/json'
+    },
+    body: JSON.stringify(data)
   })
+    .then(res => {
+      // json-serverで上手くHeaderが扱えなかったため、手動でCookieを設定。
+      document.cookie = `Authorization=${res.headers.get('Authorization')}`
+
+      const currentCookie: String | null = res.headers.get('Authorization')
+      if (currentCookie === null) {
+        dispatch(fetchLoginStatus(false))
+      }
+      dispatch(fetchLoginStatus(true))
+    })
+    .catch(e => {
+      console.log(e)
+    })
 
   dispatch(fetchLoadUserData(false))
 }

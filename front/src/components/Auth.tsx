@@ -1,15 +1,12 @@
 import React from 'react'
-import { Redirect } from 'react-router-dom'
+import { Redirect, Route } from 'react-router-dom'
 import { useSelector } from 'react-redux'
 import { RootState } from '../store'
 
 const Auth: React.FC = props => {
   const isLoggedIn = useSelector((state: RootState) => state.auth.isLoggedIn)
 
-  if (isLoggedIn) {
-    return <div>{props.children}</div>
-  }
-  return <Redirect to={'/'} />
+  return isLoggedIn ? <Route {...props} /> : <Redirect to={'/signin'} />
 }
 
 export default Auth

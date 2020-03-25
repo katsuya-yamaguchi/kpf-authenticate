@@ -30,7 +30,10 @@ export interface fetchLoadUserDataActionType {
   isLoading: Boolean
 }
 
-export type AuthActionType = loginActionType | fetchLoginStatusActionType | fetchLoadUserDataActionType
+export type AuthActionType =
+  | loginActionType
+  | fetchLoginStatusActionType
+  | fetchLoadUserDataActionType
 
 export interface userType {
   email: String

@@ -12,15 +12,16 @@ const App = () => {
   return (
     <BrowserRouter>
       <Header />
-      <Route exact path="/" component={Home} />
-      <Auth>
-        <Switch>
-          <Route exact path="/useronly" component={UserOnly} />
-        </Switch>
-      </Auth>
-      <Route path="/signin" component={SignIn} />
-      <Route path="/signup" component={SignUp} />
-      <Route />
+      <Switch>
+        <Route exact path="/" component={Home} />
+        <Route exact path="/signin" component={SignIn} />
+        <Route exact path="/signup" component={SignUp} />
+        <Auth>
+          <Switch>
+            <Route exact path="/useronly" component={UserOnly} />
+          </Switch>
+        </Auth>
+      </Switch>
     </BrowserRouter>
   )
 }
