@@ -40,8 +40,6 @@ export const thunkLogin = (
   unknown,
   AuthActionType
 > => async dispatch => {
-  dispatch(fetchLoadUserData(true))
-
   const url = 'http://localhost:3003/users'
   const data = {
     email: user.email,
@@ -70,6 +68,4 @@ export const thunkLogin = (
     .catch(e => {
       console.log(e)
     })
-
-  dispatch(fetchLoadUserData(false))
 }

@@ -1,12 +1,12 @@
-import React from 'react'
+import React, { useEffect } from 'react'
 import { useDispatch, useSelector } from 'react-redux'
 import { thunkLogin } from '../actions/auth'
 import { userType } from '../constants/auth'
 import { RootState } from '../store'
 
-import TextField from '@material-ui/core/TextField'
-import Button from '@material-ui/core/Button'
+import { TextField, Button } from '@material-ui/core'
 import { makeStyles, createStyles, Theme } from '@material-ui/core/styles'
+import { useHistory } from 'react-router-dom'
 
 const useStyles = makeStyles((theme: Theme) =>
   createStyles({
@@ -23,7 +23,8 @@ const useStyles = makeStyles((theme: Theme) =>
 
 const SignIn: React.FC = props => {
   const dispatch = useDispatch()
-  const isLoading = useSelector((state: RootState) => state.auth.isLoading)
+  const isLoggedIn = useSelector((state: RootState) => state.auth.isLoggedIn)
+  const history = useHistory()
 
   const classes = useStyles()
 
@@ -35,6 +36,12 @@ const SignIn: React.FC = props => {
     }
     dispatch(thunkLogin(user))
   }
+
+  useEffect(() => {
+    if (isLoggedIn) {
+      history.push('/useronly')
+    }
+  })
 
   return (
     <div>
@@ -49,15 +56,14 @@ const SignIn: React.FC = props => {
           <div>
             <TextField type="password" name="password" label="Password" />
           </div>
-          {isLoading ? isLoading : isLoading}
           <div>
             <Button
-                className={classes.button}
-                variant="contained"
-                color="primary"
-                type="submit"
-              >
-                SignIn
+              className={classes.button}
+              variant="contained"
+              color="primary"
+              type="submit"
+            >
+              SignIn
             </Button>
           </div>
         </form>
