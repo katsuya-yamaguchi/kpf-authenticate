@@ -27,7 +27,7 @@ export const authReducer = (
     case FETCH_LOGIN_STATUS:
       return Object.assign({}, state, { isLoggedIn: action.isLoggedIn })
     case FETCH_LOAD_USER_DATA:
-      return Object.assign({}, state, { isLoggedIn: action.isLoading })
+      return Object.assign({}, state, { isLoading: action.isLoading })
     default:
       return state
   }
