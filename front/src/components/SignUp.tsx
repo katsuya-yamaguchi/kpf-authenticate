@@ -1,28 +1,39 @@
-import React from 'react'
-import { useDispatch } from 'react-redux'
-import { login } from '../actions/auth'
-import { userType } from '../constants/auth'
+import React, { useEffect } from 'react'
+import { useSelector } from 'react-redux'
+import { thunkSignUp } from '../actions/auth'
+import { RootState } from '../store'
+
+import { makeStyles, createStyles, Theme } from '@material-ui/core/styles'
+import { useHistory } from 'react-router-dom'
+
+import AuthForm from './AuthForm'
+
+const useStyles = makeStyles((theme: Theme) =>
+  createStyles({
+    root: {
+      display: 'flex',
+      justifyContent: 'center'
+    }
+  })
+)
 
 const SignUp: React.FC = props => {
-  const dispatch = useDispatch()
+  const isLoggedIn = useSelector((state: RootState) => state.auth.isLoggedIn)
+  const history = useHistory()
+  const classes = useStyles()
 
-  const handleSubmit = (e: React.FormEvent<HTMLFormElement>) => {
-    e.preventDefault()
-    const user: userType = {
-      email: e.currentTarget.email.value,
-      password: e.currentTarget.password.value
+  useEffect(() => {
+    if (isLoggedIn) {
+      history.push('/useronly')
     }
-    dispatch(login(user))
-  }
+  })
 
   return (
     <div>
-      <h1>SignUp</h1>
-      <form onSubmit={handleSubmit}>
-        <input type="text" name="email" placeholder="Email" />
-        <input type="password" name="password" placeholder="Password" />
-        <button type="submit">SingUp</button>
-      </form>
+      <div className={classes.root}>
+        <h1>SignUp</h1>
+      </div>
+      <AuthForm processName='signup' runFunc={thunkSignUp} />
     </div>
   )
 }
