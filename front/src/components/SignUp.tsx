@@ -33,7 +33,7 @@ const SignUp: React.FC = props => {
       <div className={classes.root}>
         <h1>SignUp</h1>
       </div>
-      <AuthForm processName='signup' runFunc={thunkSignUp} />
+      <AuthForm processName="signup" runFunc={thunkSignUp} />
     </div>
   )
 }

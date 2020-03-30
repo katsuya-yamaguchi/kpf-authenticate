@@ -21,7 +21,9 @@ const useStyles = makeStyles((theme: Theme) =>
 
 interface propType {
   processName: String
-  runFunc: (user: userType) => ThunkAction<void, AuthStateType, unknown, AuthActionType>
+  runFunc: (
+    user: userType
+  ) => ThunkAction<void, AuthStateType, unknown, AuthActionType>
 }
 
 const AuthForm: React.FC<propType> = props => {
