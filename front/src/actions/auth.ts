@@ -1,22 +1,11 @@
 import {
   userType,
   AuthActionType,
-  LOGIN,
   FETCH_LOGIN_STATUS,
   FETCH_LOAD_USER_DATA,
   AuthStateType
 } from '../constants/auth'
 import { ThunkAction } from 'redux-thunk'
-
-export const login = (user: userType): AuthActionType => {
-  return {
-    type: LOGIN,
-    data: {
-      email: user.email,
-      password: user.password
-    }
-  }
-}
 
 export const fetchLoadUserData = (state: Boolean): AuthActionType => {
   return {

@@ -9,15 +9,6 @@ export interface loginStateType {
   isLoggedIn: boolean
 }
 
-export const LOGIN = 'LOGIN'
-export interface loginActionType {
-  type: typeof LOGIN
-  data: {
-    email: String
-    password: String
-  }
-}
-
 export const FETCH_LOGIN_STATUS = 'FETCH_LOGIN_STATUS'
 export interface fetchLoginStatusActionType {
   type: typeof FETCH_LOGIN_STATUS
@@ -31,7 +22,6 @@ export interface fetchLoadUserDataActionType {
 }
 
 export type AuthActionType =
-  | loginActionType
   | fetchLoginStatusActionType
   | fetchLoadUserDataActionType
 
