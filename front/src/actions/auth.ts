@@ -69,3 +69,41 @@ export const thunkLogin = (
       console.log(e)
     })
 }
+
+export const thunkSignUp = (
+  user: userType
+): ThunkAction<
+  void,
+  AuthStateType,
+  unknown,
+  AuthActionType
+> => async dispatch => {
+  const url = 'http://localhost:3003/users'
+  const data = {
+    email: user.email,
+    password: user.password
+  }
+
+  fetch(url, {
+    method: 'POST',
+    mode: 'cors',
+    credentials: 'include',
+    headers: {
+      'Content-Type': 'application/json'
+    },
+    body: JSON.stringify(data)
+  })
+    .then(res => {
+      // json-serverで上手くHeaderが扱えなかったため、手動でCookieを設定。
+      document.cookie = `Authorization=${res.headers.get('Authorization')}`
+
+      const currentCookie: String | null = res.headers.get('Authorization')
+      if (currentCookie === null) {
+        dispatch(fetchLoginStatus(false))
+      }
+      dispatch(fetchLoginStatus(true))
+    })
+    .catch(e => {
+      console.log(e)
+    })
+}

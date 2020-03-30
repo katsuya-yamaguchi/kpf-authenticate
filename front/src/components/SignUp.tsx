@@ -1,6 +1,6 @@
 import React, { useEffect } from 'react'
 import { useDispatch, useSelector } from 'react-redux'
-import { thunkLogin } from '../actions/auth'
+import { thunkSignUp } from '../actions/auth'
 import { userType } from '../constants/auth'
 import { RootState } from '../store'
 
@@ -34,7 +34,7 @@ const SignUp: React.FC = props => {
       email: e.currentTarget.email.value,
       password: e.currentTarget.password.value
     }
-    dispatch(thunkLogin(user))
+    dispatch(thunkSignUp(user))
   }
 
   useEffect(() => {
