@@ -26,7 +26,7 @@ export const thunkLogin = (
 ): ThunkAction<
   void,
   AuthStateType,
-  unknown,
+  undefined,
   AuthActionType
 > => async dispatch => {
   const url = 'http://localhost:3003/users'

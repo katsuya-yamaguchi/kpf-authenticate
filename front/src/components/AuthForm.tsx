@@ -23,7 +23,7 @@ interface propType {
   processName: String
   runFunc: (
     user: userType
-  ) => ThunkAction<void, AuthStateType, unknown, AuthActionType>
+  ) => ThunkAction<void, AuthStateType, undefined, AuthActionType>
 }
 
 const AuthForm: React.FC<propType> = props => {
