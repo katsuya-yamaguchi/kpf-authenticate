@@ -1,5 +1,8 @@
+import thunk from 'redux-thunk'
+import configureStore from 'redux-mock-store'
 import { fetchLoadUserData, fetchLoginStatus, thunkLogin } from '../../actions/auth'
 import { AuthActionType, FETCH_LOAD_USER_DATA, FETCH_LOGIN_STATUS, userType, AuthStateType } from '../../constants/auth'
+import { ThunkDispatch } from 'redux-thunk'
 
 describe('fetchLoadUserData', () => {
   it('is to suceed in fetching user data.', () => {
@@ -40,3 +43,26 @@ describe('fetchLoginStatus', () => {
   })
 })
 
+describe('thunkLogin', () => {
+  it('it is to suceed in login.', async () => {
+    const user: userType = {
+      email: 'sample@sample.com',
+      password: '123$fgA'
+    }
+
+    const expectedSecondAction: AuthActionType = {
+      type: FETCH_LOGIN_STATUS,
+      isLoggedIn: true
+    }
+
+    type dispatchExts = ThunkDispatch<AuthStateType, undefined, AuthActionType>
+    const mockStore = configureStore<AuthStateType, dispatchExts>([thunk])
+    const store = mockStore()
+    document.domain = "localhost:3000"
+    await store.dispatch(thunkLogin(user))
+
+    console.log(location)
+    console.log(store.getActions())
+    //expect(store.getActions()[1]).toEqual(expectedSecondAction)
+  })
+})
