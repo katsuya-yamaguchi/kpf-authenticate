@@ -28,7 +28,7 @@ export const thunkLogin = (
   AuthStateType,
   undefined,
   AuthActionType
-> => async dispatch => {
+> => dispatch => {
   const url = 'http://localhost:3003/users'
   const data = {
     email: user.email,
