@@ -35,7 +35,7 @@ export const thunkLogin = (
     password: user.password
   }
 
-  fetch(url, {
+  return fetch(url, {
     method: 'POST',
     mode: 'cors',
     credentials: 'include',
