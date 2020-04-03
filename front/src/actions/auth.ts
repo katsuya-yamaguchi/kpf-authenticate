@@ -50,8 +50,9 @@ export const thunkLogin = (
       const currentHeader: String | null = 'aaaaa'
       if (currentHeader === null) {
         dispatch(fetchLoginStatus(false))
+      }else{
+        dispatch(fetchLoginStatus(true))
       }
-      dispatch(fetchLoginStatus(true))
     })
     .catch(e => {
       console.log(e)
