@@ -1,7 +1,18 @@
 import thunk from 'redux-thunk'
 import configureStore from 'redux-mock-store'
-import { fetchLoadUserData, fetchLoginStatus, thunkLogin, thunkSignUp } from '../../actions/auth'
-import { AuthActionType, FETCH_LOAD_USER_DATA, FETCH_LOGIN_STATUS, userType, AuthStateType } from '../../constants/auth'
+import {
+  fetchLoadUserData,
+  fetchLoginStatus,
+  thunkLogin,
+  thunkSignUp
+} from '../../actions/auth'
+import {
+  AuthActionType,
+  FETCH_LOAD_USER_DATA,
+  FETCH_LOGIN_STATUS,
+  userType,
+  AuthStateType
+} from '../../constants/auth'
 import { ThunkDispatch } from 'redux-thunk'
 
 describe('fetchLoadUserData', () => {
@@ -62,7 +73,7 @@ describe('thunkLogin', () => {
     type dispatchExts = ThunkDispatch<AuthStateType, undefined, AuthActionType>
     const mockStore = configureStore<AuthStateType, dispatchExts>([thunk])
     const store = mockStore()
-    fetchMock.mockResponse(JSON.stringify({isLoggedIn: false}))
+    fetchMock.mockResponse(JSON.stringify({ isLoggedIn: false }))
     await store.dispatch(thunkLogin(user))
 
     expect(store.getActions()[0]).toEqual(expectedFetchLoginStatusAction)
@@ -92,7 +103,7 @@ describe('thunkSignUp', () => {
     type dispatchExts = ThunkDispatch<AuthStateType, undefined, AuthActionType>
     const mockStore = configureStore<AuthStateType, dispatchExts>([thunk])
     const store = mockStore()
-    fetchMock.mockResponse(JSON.stringify({isLoggedIn: false}))
+    fetchMock.mockResponse(JSON.stringify({ isLoggedIn: false }))
     await store.dispatch(thunkSignUp(user))
 
     expect(store.getActions()[0]).toEqual(expectedFetchLoginStatusAction)

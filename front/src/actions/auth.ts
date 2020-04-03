@@ -23,12 +23,7 @@ export const fetchLoginStatus = (state: Boolean): AuthActionType => {
 
 export const thunkLogin = (
   user: userType
-): ThunkAction<
-  void,
-  AuthStateType,
-  undefined,
-  AuthActionType
-> => dispatch => {
+): ThunkAction<void, AuthStateType, undefined, AuthActionType> => dispatch => {
   const url = 'http://localhost:3003/users'
   const data = {
     email: user.email,
@@ -50,7 +45,7 @@ export const thunkLogin = (
       const currentHeader: String | null = 'aaaaa'
       if (currentHeader === null) {
         dispatch(fetchLoginStatus(false))
-      }else{
+      } else {
         dispatch(fetchLoginStatus(true))
       }
     })
@@ -88,7 +83,7 @@ export const thunkSignUp = (
       const currentHeader: String | null = 'aaaaa'
       if (currentHeader === null) {
         dispatch(fetchLoginStatus(false))
-      }else{
+      } else {
         dispatch(fetchLoginStatus(true))
       }
     })

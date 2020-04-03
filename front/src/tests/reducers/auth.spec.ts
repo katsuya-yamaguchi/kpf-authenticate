@@ -1,5 +1,9 @@
 import { authReducer } from '../../reducers/auth'
-import { AuthActionType, FETCH_LOAD_USER_DATA, FETCH_LOGIN_STATUS } from '../../constants/auth'
+import {
+  AuthActionType,
+  FETCH_LOAD_USER_DATA,
+  FETCH_LOGIN_STATUS
+} from '../../constants/auth'
 
 describe('authReducer', () => {
   it('it is to suceed in load user data.', () => {
