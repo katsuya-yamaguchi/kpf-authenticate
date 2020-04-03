@@ -64,7 +64,7 @@ export const thunkSignUp = (
 ): ThunkAction<
   void,
   AuthStateType,
-  unknown,
+  undefined,
   AuthActionType
 > => async dispatch => {
   const url = 'http://localhost:3003/users'
@@ -83,14 +83,14 @@ export const thunkSignUp = (
     body: JSON.stringify(data)
   })
     .then(res => {
-      // json-serverで上手くHeaderが扱えなかったため、手動でCookieを設定。
-      document.cookie = `Authorization=${res.headers.get('Authorization')}`
-
-      const currentCookie: String | null = res.headers.get('Authorization')
-      if (currentCookie === null) {
+      // json-serverで上手くHeaderが扱えなかったため、手動で設定。
+      //const currentHeader: String | null = res.headers.get('Authorization')
+      const currentHeader: String | null = 'aaaaa'
+      if (currentHeader === null) {
         dispatch(fetchLoginStatus(false))
+      }else{
+        dispatch(fetchLoginStatus(true))
       }
-      dispatch(fetchLoginStatus(true))
     })
     .catch(e => {
       console.log(e)
