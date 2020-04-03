@@ -45,11 +45,10 @@ export const thunkLogin = (
     body: JSON.stringify(data)
   })
     .then(res => {
-      // json-serverで上手くHeaderが扱えなかったため、手動でCookieを設定。
-      document.cookie = `Authorization=${res.headers.get('Authorization')}`
-
-      const currentCookie: String | null = res.headers.get('Authorization')
-      if (currentCookie === null) {
+      // json-serverで上手くHeaderが扱えなかったため、手動で設定。
+      //const currentHeader: String | null = res.headers.get('Authorization')
+      const currentHeader: String | null = 'aaaaa'
+      if (currentHeader === null) {
         dispatch(fetchLoginStatus(false))
       }
       dispatch(fetchLoginStatus(true))
