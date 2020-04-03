@@ -5,7 +5,7 @@ import { AuthActionType, FETCH_LOAD_USER_DATA, FETCH_LOGIN_STATUS, userType, Aut
 import { ThunkDispatch } from 'redux-thunk'
 
 describe('fetchLoadUserData', () => {
-  it('is to suceed in fetching user data.', () => {
+  it('it is to suceed in fetching user data.', () => {
     const state: Boolean = true
     const expectedAction: AuthActionType = {
       type: FETCH_LOAD_USER_DATA,
@@ -13,7 +13,7 @@ describe('fetchLoadUserData', () => {
     }
     expect(fetchLoadUserData(state)).toEqual(expectedAction)
   })
-  it('is to failed in fetching user data.', () => {
+  it('it is to failed in fetching user data.', () => {
     const state: Boolean = false
     const expectedAction: AuthActionType = {
       type: FETCH_LOAD_USER_DATA,
@@ -44,25 +44,31 @@ describe('fetchLoginStatus', () => {
 })
 
 describe('thunkLogin', () => {
-  it('it is to suceed in login.', async () => {
+  beforeEach(() => {
+    fetchMock.resetMocks()
+  })
+
+  it('it is to failed in login.', async () => {
     const user: userType = {
       email: 'sample@sample.com',
       password: '123$fgA'
     }
 
-    const expectedSecondAction: AuthActionType = {
+    const expectedFetchLoginStatusAction: AuthActionType = {
       type: FETCH_LOGIN_STATUS,
-      isLoggedIn: true
+      isLoggedIn: false
     }
 
     type dispatchExts = ThunkDispatch<AuthStateType, undefined, AuthActionType>
     const mockStore = configureStore<AuthStateType, dispatchExts>([thunk])
     const store = mockStore()
-    document.domain = "localhost:3000"
+    fetchMock.mockResponse(JSON.stringify({isLoggedIn: false}))
     await store.dispatch(thunkLogin(user))
 
-    console.log(location)
-    console.log(store.getActions())
-    //expect(store.getActions()[1]).toEqual(expectedSecondAction)
+    expect(store.getActions()[0]).toEqual(expectedFetchLoginStatusAction)
+  })
+
+  xit('it is to succeed in login.', () => {
+    // fetch-mockでレスポンスのヘッダーにAuthorizationをセットする方法が不明なため、スキップ。
   })
 })
