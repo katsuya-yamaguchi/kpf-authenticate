@@ -3,7 +3,7 @@ import './App.css'
 import { BrowserRouter, Route, Switch } from 'react-router-dom'
 import UserOnly from './components/UserOnly'
 import Home from './components/Home'
-import SignIn from './components/SignIn'
+import SignInContainer from './container/SignInContainer'
 import SignUp from './components/SignUp'
 import Header from './components/Header'
 import Auth from './components/Auth'
@@ -14,7 +14,7 @@ const App = () => {
       <Header />
       <Switch>
         <Route exact path="/" component={Home} />
-        <Route exact path="/signin" component={SignIn} />
+        <Route exact path="/signin" component={SignInContainer} />
         <Route exact path="/signup" component={SignUp} />
         <Auth>
           <Switch>
