@@ -1,5 +1,4 @@
 import React from 'react'
-import { useDispatch } from 'react-redux'
 import { userType, AuthStateType, AuthActionType } from '../constants/auth'
 import { ThunkAction } from 'redux-thunk'
 
@@ -19,15 +18,14 @@ const useStyles = makeStyles((theme: Theme) =>
   })
 )
 
-interface propType {
+export interface propType {
   processName: String
-  runFunc: (
+  doAuthenticate: (
     user: userType
   ) => ThunkAction<void, AuthStateType, undefined, AuthActionType>
 }
 
 const AuthForm: React.FC<propType> = props => {
-  const dispatch = useDispatch()
   const classes = useStyles()
 
   const handleSubmit = (e: React.FormEvent<HTMLFormElement>) => {
@@ -36,7 +34,7 @@ const AuthForm: React.FC<propType> = props => {
       email: e.currentTarget.email.value,
       password: e.currentTarget.password.value
     }
-    dispatch(props.runFunc(user))
+    props.doAuthenticate(user)
   }
 
   return (
