@@ -1,7 +1,7 @@
 import React from 'react'
 import './App.css'
 import { BrowserRouter, Route, Switch } from 'react-router-dom'
-import UserOnly from './components/UserOnly'
+import UserOnlyContainer from './container/UserOnlyContainer'
 import Home from './components/Home'
 import SignInContainer from './container/SignInContainer'
 import SignUp from './components/SignUp'
@@ -18,7 +18,7 @@ const App = () => {
         <Route exact path="/signup" component={SignUp} />
         <Auth>
           <Switch>
-            <Route exact path="/useronly" component={UserOnly} />
+            <Route exact path="/useronly" component={UserOnlyContainer} />
           </Switch>
         </Auth>
       </Switch>

@@ -1,14 +1,16 @@
 import React from 'react'
-import { useDispatch } from 'react-redux'
 import Button from '@material-ui/core/Button'
-import { fetchLoginStatus } from '../actions/auth'
 import styles from './UserOnly.module.scss'
 import TitleBar from './TitleBar'
+import { AuthActionType } from '../constants/auth'
 
-const UserOnly: React.FC = props => {
-  const dispatch = useDispatch()
+export interface propType {
+  fetchLoginStatus: (state: Boolean) => AuthActionType
+}
+
+const UserOnly: React.FC<propType> = props => {
   const handleClick = (e: React.MouseEvent<HTMLButtonElement>) => {
-    dispatch(fetchLoginStatus(false))
+    props.fetchLoginStatus(false)
   }
 
   return (
