@@ -2,25 +2,14 @@ import React, { useEffect } from 'react'
 import { useSelector } from 'react-redux'
 import { thunkSignUp } from '../actions/auth'
 import { RootState } from '../store'
-
-import { makeStyles, createStyles, Theme } from '@material-ui/core/styles'
 import { useHistory } from 'react-router-dom'
 
 import AuthForm from './AuthForm'
-
-const useStyles = makeStyles((theme: Theme) =>
-  createStyles({
-    root: {
-      display: 'flex',
-      justifyContent: 'center'
-    }
-  })
-)
+import TitleBar from './TitleBar'
 
 const SignUp: React.FC = props => {
   const isLoggedIn = useSelector((state: RootState) => state.auth.isLoggedIn)
   const history = useHistory()
-  const classes = useStyles()
 
   useEffect(() => {
     if (isLoggedIn) {
@@ -30,10 +19,8 @@ const SignUp: React.FC = props => {
 
   return (
     <div>
-      <div className={classes.root}>
-        <h1>SignUp</h1>
-      </div>
       <AuthForm processName="signup" runFunc={thunkSignUp} />
+      <TitleBar title='SignUp' />
     </div>
   )
 }

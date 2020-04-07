@@ -1,11 +1,9 @@
 import React from 'react'
-import styles from './Home.module.scss'
+import TitleBar from './TitleBar'
 
 const Home: React.FC = props => {
   return (
-    <div className={styles.title}>
-      <h1>Home</h1>
-    </div>
+    <TitleBar title='Home' />
   )
 }
 
