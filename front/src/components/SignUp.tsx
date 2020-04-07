@@ -1,26 +1,29 @@
 import React, { useEffect } from 'react'
-import { useSelector } from 'react-redux'
 import { thunkSignUp } from '../actions/auth'
-import { RootState } from '../store'
 import { useHistory } from 'react-router-dom'
 
-import AuthForm from './AuthForm'
+import AuthFormContainer from '../container/AuthFormContainer'
 import TitleBar from './TitleBar'
 
-const SignUp: React.FC = props => {
-  const isLoggedIn = useSelector((state: RootState) => state.auth.isLoggedIn)
+export interface propType {
+  isLoggedIn: boolean
+  title: String
+  processName: String
+}
+
+const SignUp: React.FC<propType> = props => {
   const history = useHistory()
 
   useEffect(() => {
-    if (isLoggedIn) {
+    if (props.isLoggedIn) {
       history.push('/useronly')
     }
   })
 
   return (
     <div>
-      <AuthForm processName="signup" runFunc={thunkSignUp} />
-      <TitleBar title='SignUp' />
+      <TitleBar title={props.title} />
+      <AuthFormContainer processName={props.processName} doAuthenticate={thunkSignUp} />
     </div>
   )
 }
