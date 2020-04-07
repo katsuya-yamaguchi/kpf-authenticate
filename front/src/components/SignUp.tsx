@@ -1,39 +1,29 @@
 import React, { useEffect } from 'react'
-import { useSelector } from 'react-redux'
 import { thunkSignUp } from '../actions/auth'
-import { RootState } from '../store'
-
-import { makeStyles, createStyles, Theme } from '@material-ui/core/styles'
 import { useHistory } from 'react-router-dom'
 
-import AuthForm from './AuthForm'
+import AuthFormContainer from '../container/AuthFormContainer'
+import TitleBar from './TitleBar'
 
-const useStyles = makeStyles((theme: Theme) =>
-  createStyles({
-    root: {
-      display: 'flex',
-      justifyContent: 'center'
-    }
-  })
-)
+export interface propType {
+  isLoggedIn: boolean
+  title: String
+  processName: String
+}
 
-const SignUp: React.FC = props => {
-  const isLoggedIn = useSelector((state: RootState) => state.auth.isLoggedIn)
+const SignUp: React.FC<propType> = props => {
   const history = useHistory()
-  const classes = useStyles()
 
   useEffect(() => {
-    if (isLoggedIn) {
+    if (props.isLoggedIn) {
       history.push('/useronly')
     }
   })
 
   return (
     <div>
-      <div className={classes.root}>
-        <h1>SignUp</h1>
-      </div>
-      <AuthForm processName="signup" runFunc={thunkSignUp} />
+      <TitleBar title={props.title} />
+      <AuthFormContainer processName={props.processName} doAuthenticate={thunkSignUp} />
     </div>
   )
 }
